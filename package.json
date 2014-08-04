@@ -2,9 +2,6 @@
   "name": "zoomood",
   "version": "0.1.1",
   "private": true,
-  "scripts": {
-    "postinstall": "bower install"
-  },
   "engines": {
     "node": "0.10.21"
   },
@@ -20,10 +17,32 @@
     "twitter-bootstrap-node": "*"
   },
   "devDependencies": {
+    "blueimp-file-upload": "^9.5.8",
+    "browserify": "^5.9.1",
+    "browserify-shim": "git://github.com/thlorenz/browserify-shim.git#browserify-5.8",
+    "fabric": "^1.4.9",
+    "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.7",
     "gulp-cssmin": "^0.1.5",
     "gulp-less": "^1.2.3",
     "gulp-livereload": "^2.1.0",
-    "nodemon": "*"
+    "gulp-rename": "^1.2.0",
+    "jquery": "^2.1.1",
+    "jquery.ui.widget": "^1.10.3",
+    "jsdom": "^0.11.1",
+    "nodemon": "*",
+    "socket.io-client": "^1.0.4",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "browser": {
+    "jquery.fileupload": "./bower_components/jquery-file-upload/js/jquery.fileupload"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "jquery.fileupload": "global:fileupload"
   }
 }

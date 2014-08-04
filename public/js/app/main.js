@@ -1,8 +1,3 @@
-define([
-    'jquery',
-    './zoomood.canvas'
-  ], function($) {
-  $(function() {
-    console.log('looool');
-  })
-});
+'use strict';
+
+var zoomoodCanvas = require('./zoomood.canvas');

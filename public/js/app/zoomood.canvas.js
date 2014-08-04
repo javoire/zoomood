@@ -1,18 +1,17 @@
-define([
-    'jquery',
-    'socketio',
-    'fabric',
-    'jquery.fileupload',
-    'jquery.ui.widget'
-  ], function($, io, fabric) {
-  var fabricCanvas,
-      socket = io.connect('http://localhost');
+(function(){
+  var $ = require('jquery'),
+      io = require('socket.io-client'),
+      fabricCanvas = require('fabric');
 
-  $(function() {
+  $.fileupload = require('jquery.fileupload'),
+
+  module.exports = function() {
 
     /*******************************
      * Variables
      *******************************/
+    // var fabricCanvas,
+    var socket = io.connect('http://localhost');
     var canvas;
 
     var lastX, lastY;
@@ -542,5 +541,5 @@ define([
     initFileUpload();
     ajaxGetMedia();
     // showCanvasBoundingRect(true);
-  });
-})
+  }
+})();

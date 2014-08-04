@@ -11,10 +11,11 @@ lib-cov
 *.swo
 benchmarks/graphs
 testing
-node_modules/
+node_modules
 testing
 .coverage_data
 cover_html
 test.js
 .idea
 public/uploads/
+bower_components
