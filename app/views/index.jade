@@ -7,7 +7,7 @@ block content
       .btn.btn-add-media
         | Add item
         i.fa.fa-plus
-      form.fileupload(action="/upload", method="POST", enctype="multipart/form-data")
+      form#fileupload.fileupload(action="/upload", method="POST", enctype="multipart/form-data")
         input(type="file", name="files[]", multiple)
       .btn.btn-reset-view
         | View all
@@ -23,7 +23,7 @@ block content
       //-   i.fa.fa-trash-o
       //-   span &nbsp;Delete all
 
-  div#canvas-wrapper.canvas-wrapper
+  div#canvas-wrapper.canvas-wrapper(zoomood-canvas)
     div.dropzone
     //- div.canvas.span12.zoomContainer
     //-   each m in media

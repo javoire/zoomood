@@ -29,7 +29,7 @@ gulp.task('build', ['less'], function() {
 gulp.task('scripts', function() {
    return browserify('./public/js/app/main.js')
       .bundle()
-      .pipe(source('app.js'))
+      .pipe(source('all.js'))
       .pipe(gulp.dest('./public/js'));
 });
 
@@ -37,7 +37,7 @@ gulp.task('default', function () {
   server.listen();
   gulp.watch('public/css/less/**/*.less', ['less']);
   gulp.watch('public/js/app/**/*.js', ['scripts']);
-  gulp.watch(['public/**/*.css','**/*/app.js',]).on('change', function(file) {
+  gulp.watch(['public/**/*.css','public/js/all.js',]).on('change', function(file) {
     server.changed(file.path);
   });
 });

@@ -4,9 +4,8 @@ html
     title= title
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/style.css", media="screen")
-    script(src="js/app.js")
 
-  body
+  body(ng-app="app", ng-controller="AppCtrl")
     block content
     .splash-screen
       .loader
@@ -23,5 +22,6 @@ html
           code Mouse
           | to zoom and pan
 
+    script(src="js/all.js")
     if process.env.NODE_ENV == 'development'
       script(src="http://0.0.0.0:35729/livereload.js?snipver=1")
