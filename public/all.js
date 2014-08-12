@@ -15,7 +15,7 @@ angular.module('app', [
 
 console.log('app.js');
 
-},{"./canvas":5,"angular":7,"angular-ui-router":6}],2:[function(require,module,exports){
+},{"./canvas":4,"angular":7,"angular-ui-router":6}],2:[function(require,module,exports){
 'use strict';
 
 module.exports = function(CanvasService) {
@@ -24,6 +24,32 @@ module.exports = function(CanvasService) {
 };
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+module.exports = function() {
+  return {
+    restrict: 'A',
+    scope: true,
+    controller: 'CanvasCtrl',
+    link: function(scope, element, attrs) {
+      console.log('zoomoodCanvasDirective');
+    }
+  }
+}
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+var canvasDirective = require('./directives/canvasDirective'),
+    CanvasCtrl = require('./controllers/CanvasCtrl'),
+    CanvasService = require('./services/CanvasService');
+
+module.exports = angular.module('app.canvas', [])
+  .directive('zoomoodCanvas', canvasDirective)
+  .controller('CanvasCtrl', CanvasCtrl)
+  .service('CanvasService', CanvasService);
+
+},{"./controllers/CanvasCtrl":2,"./directives/canvasDirective":3,"./services/CanvasService":5}],5:[function(require,module,exports){
 'use strict';
 // var fabric = require('fabric').fabric;
 // var io = require('socket.io-client');
@@ -509,33 +535,7 @@ module.exports = function CanvasService() {
   return new Canvas();
 }
 
-},{}],4:[function(require,module,exports){
-'use strict';
-
-module.exports = function() {
-  return {
-    restrict: 'A',
-    scope: true,
-    controller: 'CanvasCtrl',
-    link: function(scope, element, attrs) {
-      console.log('zoomoodCanvasDirective');
-    }
-  }
-}
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var canvasDirective = require('./canvasDirective'),
-    CanvasCtrl = require('./CanvasCtrl'),
-    CanvasService = require('./CanvasService');
-
-module.exports = angular.module('app.canvas', [])
-  .directive('zoomoodCanvas', canvasDirective)
-  .controller('CanvasCtrl', CanvasCtrl)
-  .service('CanvasService', CanvasService);
-
-},{"./CanvasCtrl":2,"./CanvasService":3,"./canvasDirective":4}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.10

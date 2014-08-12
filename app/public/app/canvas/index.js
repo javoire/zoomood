@@ -1,8 +1,8 @@
 'use strict';
 
-var canvasDirective = require('./canvasDirective'),
-    CanvasCtrl = require('./CanvasCtrl'),
-    CanvasService = require('./CanvasService');
+var canvasDirective = require('./directives/canvasDirective'),
+    CanvasCtrl = require('./controllers/CanvasCtrl'),
+    CanvasService = require('./services/CanvasService');
 
 module.exports = angular.module('app.canvas', [])
   .directive('zoomoodCanvas', canvasDirective)

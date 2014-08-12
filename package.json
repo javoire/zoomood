@@ -28,7 +28,7 @@
     "angular": "^1.2.19",
     "angular-mocks": "^1.2.19",
     "angular-ui-router": "^0.2.10",
-    "browserify": "^5.9.1",
+    "browserify": "^3.46.1",
     "fabric": "^1.4.9",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.7",
@@ -39,14 +39,11 @@
     "gulp-rename": "^1.2.0",
     "jquery": "^2.1.1",
     "karma": "^0.12.21",
-    "karma-browserifast": "^0.7.0",
-    "karma-browserify": "^0.2.1",
     "karma-chrome-launcher": "^0.1.4",
     "karma-coverage": "^0.2.5",
     "karma-jasmine": "^0.1.5",
     "nodemon": "^1.2.1",
     "socket.io-client": "^1.0.4",
-    "vinyl-source-stream": "^0.1.1",
-    "wiredep": "^1.8.2"
+    "vinyl-source-stream": "^0.1.1"
   }
 }

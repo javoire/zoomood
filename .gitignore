@@ -19,3 +19,4 @@ test.js
 .idea
 public/uploads/
 bower_components
+coverage
