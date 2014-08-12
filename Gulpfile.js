@@ -11,33 +11,38 @@ var gulp  = require('gulp'),
     autoprefixer = require('gulp-autoprefixer');
 
 // other vars
-var cssRoot = 'public/css/';
+var lessRoot = 'app/public/styles/';
+var cssRoot = 'public/';
 
-gulp.task('less', function() {
-  gulp.src(cssRoot + 'less/style.less')
+gulp.task('styles', function() {
+  return gulp.src(lessRoot + 'style.less')
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(gulp.dest(cssRoot));
 })
 
 gulp.task('build', ['less'], function() {
-  gulp.src(cssRoot + 'style.css') // DOES NOT WORK.........................
+  return gulp.src(cssRoot + 'style.css') // DOES NOT WORK.........................
     .pipe(cssmin({keepSpecialComments:0}))
     .pipe(gulp.dest(cssRoot));
 });
 
 gulp.task('scripts', function() {
-   return browserify('./public/js/app/main.js')
-      .bundle()
-      .pipe(source('all.js'))
-      .pipe(gulp.dest('./public/js'));
+  return browserify('./app/public/app/app.js')
+    .bundle()
+    .on('error', function(err) {
+      console.log(err.toString());
+      this.emit('end');
+    })
+    .pipe(source('all.js'))
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('default', function () {
   server.listen();
-  gulp.watch('public/css/less/**/*.less', ['less']);
-  gulp.watch('public/js/app/**/*.js', ['scripts']);
-  gulp.watch(['public/**/*.css','public/js/all.js',]).on('change', function(file) {
+  gulp.watch('app/public/styles/**/*.less', ['styles']);
+  gulp.watch('app/public/app/**/*.js', ['scripts']);
+  gulp.watch(['public/style.css','public/all.js',]).on('change', function(file) {
     server.changed(file.path);
   });
 });
