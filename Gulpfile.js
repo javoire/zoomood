@@ -14,6 +14,11 @@ var gulp  = require('gulp'),
 var lessRoot = 'app/public/styles/';
 var cssRoot = 'public/';
 
+var errorHandler = function(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+
 gulp.task('styles', function() {
   return gulp.src(lessRoot + 'style.less')
     .pipe(less())
@@ -30,10 +35,7 @@ gulp.task('build', ['less'], function() {
 gulp.task('scripts', function() {
   return browserify('./app/public/app/app.js')
     .bundle()
-    .on('error', function(err) {
-      console.log(err.toString());
-      this.emit('end');
-    })
+    .on('error', errorHandler)
     .pipe(source('all.js'))
     .pipe(gulp.dest('./public'));
 });
@@ -41,7 +43,7 @@ gulp.task('scripts', function() {
 gulp.task('default', function () {
   server.listen();
   gulp.watch('app/public/styles/**/*.less', ['styles']);
-  gulp.watch('app/public/app/**/*.js', ['scripts']);
+  gulp.watch(['app/public/app/**/*.js', '!**/*.spec.js'], ['scripts']);
   gulp.watch(['public/style.css','public/all.js',]).on('change', function(file) {
     server.changed(file.path);
   });

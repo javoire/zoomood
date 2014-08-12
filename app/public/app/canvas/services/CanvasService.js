@@ -1,12 +1,14 @@
 'use strict';
-// var fabric = require('fabric').fabric;
-// var io = require('socket.io-client');
+var fabric = require('fabric').fabric,
+    io = require('socket.io-client');
 
 module.exports = function CanvasService() {
-  var Canvas = function() {
-    // this.socket = io.connect('http://localhost');
-    this.canvas;
 
+  var Canvas = function() {
+    this.socket = io.connect('http://localhost');
+    this.fabricCanvas = new fabric.Canvas('canvas');
+
+    this.canvas;
     this.lastX;
     this.lastY;
     this.dragStart;
@@ -20,23 +22,24 @@ module.exports = function CanvasService() {
     // this.splashScreen = $('.splash-screen');
   }
 
-  // Canvas.prototype.ajaxSaveCanvas = function() {
-  //   // update all media
-  //   var objects = fabricCanvas.getObjects();
-  //   for (i in objects) {
-  //     this.ajaxUpdateMedia(objects[i]);
-  //   }
-  // }
+  Canvas.prototype.ajaxSaveCanvas = function() {
+    // update all media
+    var objects = this.fabricCanvas.getObjects();
+    for (i in objects) {
+      this.ajaxUpdateMedia(objects[i]);
+    }
+  }
 
-  // Canvas.prototype.ajaxUpdateMedia = function(media) {
-  //   // sync to server
-  //   this.socket.emit('update media', {
-  //     name: media.name,
-  //     scale: media.get('scaleX'),
-  //     angle: media.get('angle'),
-  //     x: media.get('left'),
-  //     y: media.get('top')
-  //   });
+  Canvas.prototype.ajaxUpdateMedia = function(media) {
+    // sync to server
+    this.socket.emit('update media', {
+      name: media.name,
+      scale: media.get('scaleX'),
+      angle: media.get('angle'),
+      x: media.get('left'),
+      y: media.get('top')
+    });
+  }
 
   //   // save data TODO: angularize
   //   // $.ajax({

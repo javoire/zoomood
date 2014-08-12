@@ -7,7 +7,11 @@ describe('CanvasService', function() {
     CanvasService = _CanvasService_;
   }));
 
-  it('should lol', function() {
+  it('has an instance of fabric Canvas', function() {
+    expect(CanvasService.fabricCanvas).toBeDefined();
+  });
 
+  it('has an instance of socket', function() {
+    expect(CanvasService.socket).toBeDefined();
   });
 })
