@@ -1,17 +1,18 @@
 describe('CanvasService', function() {
-  var CanvasService;
+  var CanvasService, httpBackend;
 
   beforeEach(module('app.canvas'));
 
-  beforeEach(inject(function(_CanvasService_){
+  beforeEach(inject(function(_CanvasService_/*, $httpBackend*/){
     CanvasService = _CanvasService_;
+    // httpBackend = $httpBackend;
   }));
 
-  it('has an instance of fabric Canvas', function() {
+  it('has a defined fabricCanvas', function() {
     expect(CanvasService.fabricCanvas).toBeDefined();
   });
 
-  it('has an instance of socket', function() {
+  it('has a defined socket', function() {
     expect(CanvasService.socket).toBeDefined();
   });
 })

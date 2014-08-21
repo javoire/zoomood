@@ -1,4 +1,4 @@
-var media = require('../app/controllers/media');
+var media = require('../controllers/media');
 
 module.exports = function(app, Media) {
   // GET index

@@ -2,7 +2,7 @@
 var fabric = require('fabric').fabric,
     io = require('socket.io-client');
 
-module.exports = function CanvasService() {
+module.exports = function CanvasService($http) {
 
   var Canvas = function() {
     this.socket = io.connect('http://localhost');
@@ -22,47 +22,60 @@ module.exports = function CanvasService() {
     // this.splashScreen = $('.splash-screen');
   }
 
-  Canvas.prototype.ajaxSaveCanvas = function() {
-    // update all media
-    var objects = this.fabricCanvas.getObjects();
-    for (i in objects) {
-      this.ajaxUpdateMedia(objects[i]);
-    }
-  }
+  // Canvas.prototype.ajaxSaveCanvas = function() {
+  //   // update all media
+  //   var objects = this.fabricCanvas.getObjects();
+  //   for (i in objects) {
+  //     this.ajaxUpdateMedia(objects[i]);
+  //   }
+  // }
 
-  Canvas.prototype.ajaxUpdateMedia = function(media) {
+  // Canvas.prototype.ajaxUpdateMedia = function(media) {
     // sync to server
-    this.socket.emit('update media', {
-      name: media.name,
-      scale: media.get('scaleX'),
-      angle: media.get('angle'),
-      x: media.get('left'),
-      y: media.get('top')
-    });
-  }
+    // this.socket.emit('update media', {
+    //   name: media.name,
+    //   scale: media.get('scaleX'),
+    //   angle: media.get('angle'),
+    //   x: media.get('left'),
+    //   y: media.get('top')
+    // });
 
-  //   // save data TODO: angularize
-  //   // $.ajax({
-  //   //   url: '/media/' + media.name,
-  //   //   type: 'PUT',
-  //   //   accepts: {
-  //   //     json: 'application/json'
-  //   //   },
-  //   //   contentType: 'application/json',
-  //   //   data: JSON.stringify({
-  //   //     scale: media.get('scaleX'),
-  //   //     angle: media.get('angle'),
-  //   //     x: media.get('left'),
-  //   //     y: media.get('top')
-  //   //   }),
-  //   //   beforeSend: function(xhr) {
-  //   //     // WORKAROUND. For any reason the 'accepts' fields isn't applied
-  //   //     xhr.setRequestHeader('Accept', 'application/json');
-  //   //   },
-  //   //   success: function(data, textStatus, jqXHR) {
-  //   //     console.log('media updated: "' + media.name);
-  //   //   }
-  //   // });
+    // $http({
+    //   method: 'PUT',
+    //   url: '/media/myImg',
+    //   data: JSON.stringify({
+    //     scale: 2,
+    //     angle: 0,
+    //     x: 200,
+    //     y: 300
+    //   }),
+    // })
+    //   .success(function(lol, swag){
+    //     console.log(lol, swag);
+    //   });
+
+    // save data TODO: angularize
+    // $.ajax({
+    //   url: '/media/' + media.name,
+    //   type: 'PUT',
+    //   accepts: {
+    //     json: 'application/json'
+    //   },
+    //   contentType: 'application/json',
+    //   data: JSON.stringify({
+    //     scale: media.get('scaleX'),
+    //     angle: media.get('angle'),
+    //     x: media.get('left'),
+    //     y: media.get('top')
+    //   }),
+    //   beforeSend: function(xhr) {
+    //     // WORKAROUND. For any reason the 'accepts' fields isn't applied
+    //     xhr.setRequestHeader('Accept', 'application/json');
+    //   },
+    //   success: function(data, textStatus, jqXHR) {
+    //     console.log('media updated: "' + media.name);
+    //   }
+    // });
   // };
 
   // Canvas.prototype.ajaxDeleteMedia = function(media) {

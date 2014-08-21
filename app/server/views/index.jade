@@ -6,21 +6,22 @@ html
     link(rel="stylesheet", href="/style.css", media="screen")
 
   body(ng-app="app")
-    block content
-    .splash-screen
-      .loader
-        .dot
-        .dot
-        .dot
-        .dot
-      .loading-message
-        h2  Loading zoomboard
-        p
-          | Tip: Use
-          code Space
-          | and
-          code Mouse
-          | to zoom and pan
+    .main
+      ui-view
+    //- .splash-screen
+    //-   .loader
+    //-     .dot
+    //-     .dot
+    //-     .dot
+    //-     .dot
+    //-   .loading-message
+    //-     h2  Loading zoomboard
+    //-     p
+    //-       | Tip: Use
+    //-       code Space
+    //-       | and
+    //-       code Mouse
+    //-       | to zoom and pan
 
     script(src="/all.js")
     if process.env.NODE_ENV == 'development'
